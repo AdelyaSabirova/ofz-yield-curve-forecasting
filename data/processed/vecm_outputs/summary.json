@@ -1,0 +1,10 @@
+{
+  "n_levels_obs": 140,
+  "period_start": "2013-09-01",
+  "period_end": "2025-04-01",
+  "p_levels_aic": 2,
+  "k_ar_diff": 1,
+  "coint_rank_trace_95": 2,
+  "vecm_det": "co",
+  "fevd_source": "VAR(levels) fallback"
+}

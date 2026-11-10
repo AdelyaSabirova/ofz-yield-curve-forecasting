@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ofz-yield-curve-forecasting"
+version = "1.0.0"
+description = "Sovereign OFZ yield curve modeling (Nelson-Siegel, VECM, Random Forest, CatBoost), Diebold-Mariano evaluation, and monetary regime event studies"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "Adelya Lyara", email = "adelasabirova295@gmail.com" },
+]
+dynamic = ["dependencies"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

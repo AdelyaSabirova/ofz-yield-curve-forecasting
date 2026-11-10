@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-05-11T17:22:01",
+  "coverage": {
+    "panel_start": "2013-09-01",
+    "panel_end": "2026-03-01",
+    "survey_path_start": "2021-05-01",
+    "survey_path_end": "2026-03-01"
+  },
+  "artifacts": {
+    "panel_csv": "data/processed/policy_path_gap/policy_path_gap_panel.csv",
+    "summary_csv": "data/processed/policy_path_gap/policy_path_gap_summary.csv",
+    "figure": "assets/policy_path_gap.png",
+    "findings_markdown": "docs/p4_policy_path_gap_findings.md"
+  }
+}

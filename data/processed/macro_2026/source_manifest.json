@@ -1,0 +1,278 @@
+{
+  "generated_at": "2026-03-21T20:29:34",
+  "script": "scripts/build_expectations_panel.py",
+  "panel": {
+    "rows": 150,
+    "start": "2013-09-01",
+    "end": "2026-02-01",
+    "columns": [
+      "date",
+      "cpi_mom",
+      "cpi_yoy",
+      "key_rate",
+      "analyst_cpi_2026",
+      "analyst_key_rate_2026",
+      "usd_rub",
+      "budget_signal",
+      "breakeven_5y",
+      "breakeven_10y",
+      "ofz_nonresident_holdings_bln",
+      "ofz_market_size_bln",
+      "ofz_nonresident_share",
+      "general_government_debt_bln",
+      "general_government_debt_growth_12m"
+    ]
+  },
+  "sources": [
+    {
+      "id": "minfin_site_attempt",
+      "label": "Сайт Минфина России",
+      "source_type": "web_source",
+      "url": "https://minfin.gov.ru/",
+      "local_path": null,
+      "status": "unavailable",
+      "note": "Из текущей среды воспроизводимо не получен из-за TLS-ошибки соединения. Поэтому наблюдаемый месячный ряд Минфина не встроен, а budget_signal задан в минимальном контракте."
+    },
+    {
+      "id": "cbr_cpi_mom_local",
+      "label": "Месячный ИПЦ (м/м)",
+      "source_type": "local_excel",
+      "url": null,
+      "local_path": "data/raw/macro/cbr/ipc_mes_05-2025.xlsx",
+      "status": "ok",
+      "note": "Использован локальный файл ЦБ РФ из проекта; покрытие заканчивается маем 2025 года."
+    },
+    {
+      "id": "cbr_inflation_yoy",
+      "label": "Годовая инфляция Банка России",
+      "source_type": "html_table",
+      "url": "https://www.cbr.ru/hd_base/infl/?UniDbQuery.Posted=True",
+      "local_path": null,
+      "status": "ok",
+      "note": "Месячный ряд годовой инфляции взят из таблицы Банка России."
+    },
+    {
+      "id": "cbr_key_rate_daily",
+      "label": "Ключевая ставка Банка России",
+      "source_type": "html_table",
+      "url": "https://www.cbr.ru/hd_base/KeyRate/?UniDbQuery.Posted=True",
+      "local_path": null,
+      "status": "ok",
+      "note": "Дневная ставка ЦБ агрегирована в месячный ряд как последнее доступное значение месяца."
+    },
+    {
+      "id": "cbr_usd_xml",
+      "label": "Курс USD/RUB Банка России",
+      "source_type": "xml_api",
+      "url": "https://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=01%2F09%2F2013&date_req2=21%2F03%2F2026&VAL_NM_RQ=R01235",
+      "local_path": null,
+      "status": "ok",
+      "note": "Официальный курс доллара США усреднён по календарному месяцу."
+    },
+    {
+      "id": "cbr_macro_survey",
+      "label": "Макроэкономический опрос Банка России",
+      "source_type": "excel_download",
+      "url": "https://www.cbr.ru/Content/Document/File/144490/full.xlsx",
+      "local_path": "data/raw/macro/expectations/cbr_macro_survey_full.xlsx",
+      "status": "ok",
+      "note": "Скачан файл full.xlsx с агрегированными результатами опроса аналитиков."
+    },
+    {
+      "id": "budget_signal_regime_dummy",
+      "label": "Прокси бюджетно-долгового давления",
+      "source_type": "derived_proxy",
+      "url": null,
+      "local_path": null,
+      "status": "proxy",
+      "note": "Использована минимальная режимная переменная: 0 до 2022-02 и 1 начиная с 2022-02. Наблюдаемый месячный ряд Минфина не был получен из среды из-за TLS-ошибки при доступе к minfin.gov.ru."
+    },
+    {
+      "id": "cbr_ofz_nonresident_share",
+      "label": "Доля нерезидентов на рынке ОФЗ Банка России",
+      "source_type": "excel_download",
+      "url": "https://www.cbr.ru/vfs/eng/statistics/credit_statistics/debt/table_ofz_e.xlsx",
+      "local_path": "data/raw/macro/cbr/cbr_ofz_nonresident_share.xlsx",
+      "status": "ok",
+      "note": "Использован официальный месячный ряд Банка России по объему вложений нерезидентов в ОФЗ, размеру рынка и доле нерезидентов."
+    },
+    {
+      "id": "cbr_general_government_debt",
+      "label": "Долг сектора государственного управления по долговым ценным бумагам Банка России",
+      "source_type": "excel_download",
+      "url": "https://www.cbr.ru/vfs/eng/statistics/debt_securities/66e-debt_securities.xlsx",
+      "local_path": "data/raw/macro/cbr/cbr_domestic_debt_securities.xlsx",
+      "status": "ok",
+      "note": "Использован официальный месячный ряд Банка России по номинальному объему долговых ценных бумаг сектора государственного управления; в панель включены уровень и 12-месячный логарифмический прирост."
+    },
+    {
+      "id": "moex_ofz_in_history",
+      "label": "История ОФЗ-ИН на MOEX",
+      "source_type": "json_api",
+      "url": "https://iss.moex.com/iss/history/engines/stock/markets/bonds/securities/{secid}.json",
+      "local_path": "data/raw/macro/ofz_in/moex_ofz_in_history.csv",
+      "status": "ok",
+      "note": "Скачана объединённая история доходностей ОФЗ-ИН из ISS MOEX."
+    }
+  ],
+  "fields": {
+    "cpi_mom": {
+      "filled": true,
+      "non_null_count": 149,
+      "missing_count": 1,
+      "first_non_null": "2013-09-01",
+      "last_non_null": "2026-01-01",
+      "source_ids": [
+        "cbr_cpi_mom_local"
+      ],
+      "note": "Месячный ИПЦ из локального файла ЦБ РФ. После мая 2025 года значения отсутствуют в доступном проекту файле."
+    },
+    "cpi_yoy": {
+      "filled": true,
+      "non_null_count": 150,
+      "missing_count": 0,
+      "first_non_null": "2013-09-01",
+      "last_non_null": "2026-02-01",
+      "source_ids": [
+        "cbr_inflation_yoy"
+      ],
+      "note": "Годовая инфляция Банка России по месяцам."
+    },
+    "key_rate": {
+      "filled": true,
+      "non_null_count": 150,
+      "missing_count": 0,
+      "first_non_null": "2013-09-01",
+      "last_non_null": "2026-02-01",
+      "source_ids": [
+        "cbr_key_rate_daily"
+      ],
+      "note": "Ключевая ставка Банка России как последнее доступное значение месяца."
+    },
+    "analyst_cpi_2026": {
+      "filled": true,
+      "non_null_count": 30,
+      "missing_count": 120,
+      "first_non_null": "2023-09-01",
+      "last_non_null": "2026-02-01",
+      "source_ids": [
+        "cbr_macro_survey"
+      ],
+      "note": "Медианный прогноз аналитиков Банка России по ИПЦ на конец 2026 года. Между датами опросов используется перенос последнего доступного значения вперёд."
+    },
+    "analyst_key_rate_2026": {
+      "filled": true,
+      "non_null_count": 30,
+      "missing_count": 120,
+      "first_non_null": "2023-09-01",
+      "last_non_null": "2026-02-01",
+      "source_ids": [
+        "cbr_macro_survey"
+      ],
+      "note": "Медианный прогноз аналитиков Банка России по средней ключевой ставке за 2026 год. Между датами опросов используется перенос последнего доступного значения вперёд."
+    },
+    "usd_rub": {
+      "filled": true,
+      "non_null_count": 150,
+      "missing_count": 0,
+      "first_non_null": "2013-09-01",
+      "last_non_null": "2026-02-01",
+      "source_ids": [
+        "cbr_usd_xml"
+      ],
+      "note": "Средний за месяц официальный курс USD/RUB Банка России."
+    },
+    "budget_signal": {
+      "filled": true,
+      "non_null_count": 150,
+      "missing_count": 0,
+      "first_non_null": "2013-09-01",
+      "last_non_null": "2026-02-01",
+      "source_ids": [
+        "budget_signal_regime_dummy"
+      ],
+      "note": "Минимальный прокси бюджетно-долгового фактора: режимная переменная с февраля 2022 года."
+    },
+    "breakeven_5y": {
+      "filled": true,
+      "non_null_count": 55,
+      "missing_count": 95,
+      "first_non_null": "2021-08-01",
+      "last_non_null": "2026-02-01",
+      "source_ids": [
+        "moex_ofz_in_history"
+      ],
+      "note": "Приближённая 5-летняя вменённая инфляция: номинальная ОФЗ минус реальная доходность ОФЗ-ИН."
+    },
+    "breakeven_10y": {
+      "filled": true,
+      "non_null_count": 79,
+      "missing_count": 71,
+      "first_non_null": "2018-04-01",
+      "last_non_null": "2025-05-01",
+      "source_ids": [
+        "moex_ofz_in_history"
+      ],
+      "note": "Приближённая 10-летняя вменённая инфляция: номинальная ОФЗ минус реальная доходность ОФЗ-ИН."
+    },
+    "ofz_nonresident_holdings_bln": {
+      "filled": true,
+      "non_null_count": 149,
+      "missing_count": 1,
+      "first_non_null": "2013-09-01",
+      "last_non_null": "2026-01-01",
+      "source_ids": [
+        "cbr_ofz_nonresident_share"
+      ],
+      "note": "Объем вложений нерезидентов в ОФЗ по данным Банка России, млрд руб."
+    },
+    "ofz_market_size_bln": {
+      "filled": true,
+      "non_null_count": 149,
+      "missing_count": 1,
+      "first_non_null": "2013-09-01",
+      "last_non_null": "2026-01-01",
+      "source_ids": [
+        "cbr_ofz_nonresident_share"
+      ],
+      "note": "Размер рынка ОФЗ по данным Банка России, млрд руб."
+    },
+    "ofz_nonresident_share": {
+      "filled": true,
+      "non_null_count": 149,
+      "missing_count": 1,
+      "first_non_null": "2013-09-01",
+      "last_non_null": "2026-01-01",
+      "source_ids": [
+        "cbr_ofz_nonresident_share"
+      ],
+      "note": "Доля нерезидентов на рынке ОФЗ по данным Банка России, доля единицы."
+    },
+    "general_government_debt_bln": {
+      "filled": true,
+      "non_null_count": 149,
+      "missing_count": 1,
+      "first_non_null": "2013-09-01",
+      "last_non_null": "2026-02-01",
+      "source_ids": [
+        "cbr_general_government_debt"
+      ],
+      "note": "Номинальный объем долговых ценных бумаг сектора государственного управления, млрд руб."
+    },
+    "general_government_debt_growth_12m": {
+      "filled": true,
+      "non_null_count": 145,
+      "missing_count": 5,
+      "first_non_null": "2014-01-01",
+      "last_non_null": "2026-02-01",
+      "source_ids": [
+        "cbr_general_government_debt"
+      ],
+      "note": "12-месячный логарифмический прирост долга сектора государственного управления по долговым бумагам."
+    }
+  },
+  "gaps": [
+    "Minfin.gov.ru не удалось использовать из текущей среды: TLS-соединение обрывается на стороне сайта, поэтому вместо прямого ряда Минфина используются наблюдаемые ряды Банка России по долгу сектора государственного управления и структуре держателей ОФЗ.",
+    "Доступный в проекте файл cpi_mom заканчивается 2025-05, поэтому хвост панели по cpi_mom остаётся пустым."
+  ]
+}

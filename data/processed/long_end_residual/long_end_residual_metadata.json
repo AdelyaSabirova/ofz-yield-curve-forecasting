@@ -1,0 +1,14 @@
+{
+  "coverage": {
+    "panel_start": "2018-04-01",
+    "panel_end": "2026-02-01",
+    "old_regime_train_end": "2022-01-01"
+  },
+  "artifacts": {
+    "residual_series_csv": "data/processed/long_end_residual/long_end_residual_series.csv",
+    "summary_csv": "data/processed/long_end_residual/long_end_residual_summary.csv",
+    "coefficients_csv": "data/processed/long_end_residual/long_end_residual_coefficients.csv",
+    "figure": "assets/long_end_slope_residual.png",
+    "findings_markdown": "docs/p4_long_end_residual_findings.md"
+  }
+}

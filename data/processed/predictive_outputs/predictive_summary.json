@@ -1,0 +1,69 @@
+{
+  "generated_at": "2026-03-21T20:55:20",
+  "input_files": {
+    "core_path": "data/processed/core_2026/monthly_ns_factors_core.csv",
+    "macro_path": "data/processed/macro_2026/monthly_expectations_panel.csv",
+    "official_curve_path": "data/processed/cbr_zero_curve/monthly_cbr_zero_curve.csv"
+  },
+  "input_coverage": {
+    "panel_start": "2013-09-01",
+    "panel_end": "2026-02-01",
+    "inflation_actual_end": "2026-02-01",
+    "key_rate_actual_end": "2026-02-01",
+    "expectations_start": "2023-09-01"
+  },
+  "artifacts": {
+    "inflation_model_comparison_csv": "data/processed/predictive_outputs/inflation_model_comparison.csv",
+    "key_rate_model_comparison_csv": "data/processed/predictive_outputs/key_rate_model_comparison.csv",
+    "dm_tests_csv": "data/processed/predictive_outputs/dm_tests.csv",
+    "key_rate_tau1_increment_csv": "data/processed/predictive_outputs/key_rate_tau1_increment.csv",
+    "key_rate_tau1_dm_tests_csv": "data/processed/predictive_outputs/key_rate_tau1_dm_tests.csv",
+    "key_rate_curve_benchmark_comparison_csv": "data/processed/predictive_outputs/key_rate_curve_benchmark_comparison.csv",
+    "key_rate_curve_benchmark_dm_tests_csv": "data/processed/predictive_outputs/key_rate_curve_benchmark_dm_tests.csv",
+    "key_rate_curve_benchmark_summary_csv": "data/processed/predictive_outputs/key_rate_curve_benchmark_summary.csv",
+    "key_rate_market_controls_comparison_csv": "data/processed/predictive_outputs/key_rate_market_controls_comparison.csv",
+    "key_rate_market_controls_dm_tests_csv": "data/processed/predictive_outputs/key_rate_market_controls_dm_tests.csv",
+    "key_rate_market_controls_summary_csv": "data/processed/predictive_outputs/key_rate_market_controls_summary.csv",
+    "summary_json": "data/processed/predictive_outputs/predictive_summary.json",
+    "findings_markdown": "docs/p4_predictive_findings.md"
+  },
+  "row_counts": {
+    "inflation_model_comparison": 48,
+    "key_rate_model_comparison": 48,
+    "dm_tests": 96,
+    "key_rate_tau1_increment": 48,
+    "key_rate_tau1_dm_tests": 48,
+    "key_rate_curve_benchmark_comparison": 96,
+    "key_rate_curve_benchmark_dm_tests": 96,
+    "key_rate_curve_benchmark_summary": 6,
+    "key_rate_market_controls_comparison": 60,
+    "key_rate_market_controls_dm_tests": 60,
+    "key_rate_market_controls_summary": 14
+  },
+  "targets": {
+    "inflation": {
+      "label": "Инфляция",
+      "source_column": "cpi_yoy",
+      "target_type": "future_level",
+      "horizons": [
+        1,
+        3,
+        6,
+        12
+      ],
+      "note": "Прогнозируется годовая инфляция `cpi_yoy` на горизонте `h` месяцев."
+    },
+    "key_rate": {
+      "label": "Ключевая ставка",
+      "source_column": "key_rate",
+      "target_type": "future_average",
+      "horizons": [
+        1,
+        3,
+        6,
+        12
+      ],
+      "note": "Прогнозируется средняя ключевая ставка за следующие `h` месяцев."
+    }
+  }
+}

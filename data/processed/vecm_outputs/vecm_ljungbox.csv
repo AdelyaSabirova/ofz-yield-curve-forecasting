@@ -1,0 +1,5 @@
+variable,lb_pvalue_lag10,no_autocorr_5pct
+beta0,0.4941337595929719,True
+beta1,0.6910428193596762,True
+beta2,0.9873562339475731,True
+cpi_mom,0.3637969206269375,True

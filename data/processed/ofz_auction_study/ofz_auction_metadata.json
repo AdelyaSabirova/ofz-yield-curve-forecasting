@@ -1,0 +1,23 @@
+{
+  "source": {
+    "channel_url": "https://t.me/s/minfin",
+    "type": "official_telegram_html"
+  },
+  "coverage": {
+    "event_count": 137,
+    "start_date": "2022-10-19",
+    "end_date": "2026-03-18"
+  },
+  "volume_medians_bln": {
+    "transition_2022_2023": 59.568,
+    "stabilization_2024_plus": 80.5755
+  },
+  "artifacts": {
+    "events_csv": "data/processed/ofz_auction_study/ofz_auction_events.csv",
+    "monthly_csv": "data/processed/ofz_auction_study/ofz_auction_monthly.csv",
+    "reactions_csv": "data/processed/ofz_auction_study/ofz_auction_event_reactions.csv",
+    "summary_csv": "data/processed/ofz_auction_study/ofz_auction_event_summary.csv",
+    "findings_md": "docs/p4_ofz_auction_findings.md",
+    "figure_png": "assets/ofz_auction_study.png"
+  }
+}

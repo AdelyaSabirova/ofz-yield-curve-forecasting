@@ -1,0 +1,7 @@
+comparison_family,benchmark_name,benchmark_label,split,split_label,evaluated_combinations,benchmark_better,mean_rmse_gain_pct,median_rmse_gain_pct,evaluated_horizons,significant_benchmark_improvements
+ns_vs_official_shape,official_shape,Простые характеристики официальной КБД,all,Вся выборка,16,13,14.030652357137408,18.7950181736457,"1,3,6,12",5
+ns_vs_official_shape,official_shape,Простые характеристики официальной КБД,post_2022_02,После февраля 2022 года,16,10,2.0965976007705134,2.4859818159781204,"1,3,6,12",0
+ns_vs_official_shape,official_shape,Простые характеристики официальной КБД,pre_2022_02,До февраля 2022 года,12,11,21.53987499668415,22.529090087347377,"1,3,6,12",0
+ns_vs_simple_spreads,simple_spreads,Простые спреды авторской кривой,all,Вся выборка,16,9,0.10498257845011305,3.8216195198776797,"1,3,6,12",0
+ns_vs_simple_spreads,simple_spreads,Простые спреды авторской кривой,post_2022_02,После февраля 2022 года,16,2,-19.38083143809452,-23.981788101016903,"1,3,6,12",0
+ns_vs_simple_spreads,simple_spreads,Простые спреды авторской кривой,pre_2022_02,До февраля 2022 года,12,11,23.545694103021347,21.21941002026162,"1,3,6,12",2

@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-03-07T18:33:42",
+  "daily_last_date": "2026-03-06",
+  "monthly_last_date": "2026-03-01",
+  "splits": {
+    "2013-09_to_2022-01": {
+      "start_month": "2013-09",
+      "end_month": "2022-01",
+      "daily_obs": 2121,
+      "monthly_obs": 101,
+      "daily_first_date": "2013-09-02",
+      "daily_last_date": "2022-01-31",
+      "monthly_first_date": "2013-09-01",
+      "monthly_last_date": "2022-01-01",
+      "monthly_last_curve_source_date": "2022-01-31"
+    },
+    "2022-02_to_latest": {
+      "start_month": "2022-02",
+      "end_month": "2026-03",
+      "daily_obs": 1038,
+      "monthly_obs": 50,
+      "daily_first_date": "2022-02-01",
+      "daily_last_date": "2026-03-06",
+      "monthly_first_date": "2022-02-01",
+      "monthly_last_date": "2026-03-01",
+      "monthly_last_curve_source_date": "2026-03-06"
+    },
+    "2024-01_to_latest": {
+      "start_month": "2024-01",
+      "end_month": "2026-03",
+      "daily_obs": 553,
+      "monthly_obs": 27,
+      "daily_first_date": "2024-01-03",
+      "daily_last_date": "2026-03-06",
+      "monthly_first_date": "2024-01-01",
+      "monthly_last_date": "2026-03-01",
+      "monthly_last_curve_source_date": "2026-03-06"
+    }
+  }
+}

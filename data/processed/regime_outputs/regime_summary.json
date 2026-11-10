@@ -1,0 +1,221 @@
+{
+  "generated_at_utc": "2026-03-07T18:31:44.577411+00:00",
+  "input_data": {
+    "core_path": "data/processed/core_2026/monthly_ns_factors_core.csv",
+    "macro_path": "data/processed/macro_2026/monthly_expectations_panel.csv",
+    "core_last_date": "2026-03-01",
+    "macro_last_date": "2026-02-01",
+    "merged_last_date": "2026-02-01",
+    "model_last_date": "2026-01-01",
+    "excluded_model_dates": [
+      "2014-07-01",
+      "2014-08-01",
+      "2018-08-01"
+    ],
+    "model_rows": 146,
+    "tau_rows": 151
+  },
+  "model_spec": {
+    "variables": [
+      "beta0",
+      "beta1",
+      "beta2",
+      "cpi_mom",
+      "key_rate"
+    ],
+    "k_ar_diff": 1,
+    "coint_rank": 1,
+    "var_order": 2,
+    "forecast_horizon": 1,
+    "forecast_start_ratio": 0.6,
+    "forecast_min_train": 12,
+    "ns_abs_threshold": 1.0
+  },
+  "regimes": {
+    "pre_2022_02": {
+      "label": "2013-09 - 2022-01",
+      "tau1_mean": 4.995593082567341,
+      "tau1_std": 2.690670285017256,
+      "beta0_mean": 0.11211127257005032,
+      "key_rate_mean": 0.08150510204081632,
+      "cpi_mom_mean": 0.005368367346938721,
+      "system_mean_rmse_to_std": 1.1923396715972054,
+      "curve_to_macro_granger_5pct": 0,
+      "macro_to_curve_granger_5pct": 0,
+      "curve_share_in_cpi_fevd_h12": 54.4247799207594,
+      "curve_share_in_key_rate_fevd_h12": 59.827484353900324,
+      "beta0_loading": 0.10159039325751176,
+      "cpi_loading": 0.15011985546777173,
+      "key_rate_loading": 0.12577871891975637
+    },
+    "post_2022_02": {
+      "label": "2022-02 - last",
+      "tau1_mean": 4.4564564826678845,
+      "tau1_std": 2.4833399305283903,
+      "beta0_mean": 0.1853867942529491,
+      "key_rate_mean": 0.14687499999999998,
+      "cpi_mom_mean": 0.0070791666666666355,
+      "system_mean_rmse_to_std": 0.4337824725622738,
+      "curve_to_macro_granger_5pct": 2,
+      "macro_to_curve_granger_5pct": 1,
+      "curve_share_in_cpi_fevd_h12": 41.95888193117379,
+      "curve_share_in_key_rate_fevd_h12": 71.81040103806316,
+      "beta0_loading": 0.037719549432480674,
+      "cpi_loading": 0.08138427364096378,
+      "key_rate_loading": 0.08519300405529501
+    },
+    "transition_2022_2023": {
+      "label": "2022-02 - 2023-12",
+      "tau1_mean": 5.166510270194524,
+      "tau1_std": 2.7156424835333337,
+      "beta0_mean": 0.15094699001171072,
+      "key_rate_mean": 0.10782608695652172,
+      "cpi_mom_mean": 0.007721739130434764,
+      "system_mean_rmse_to_std": 0.6522435815547929,
+      "curve_to_macro_granger_5pct": 3,
+      "macro_to_curve_granger_5pct": 2,
+      "curve_share_in_cpi_fevd_h12": 70.41589753892012,
+      "curve_share_in_key_rate_fevd_h12": 97.17323913306547,
+      "beta0_loading": 0.07356709339882848,
+      "cpi_loading": 0.14773618462190574,
+      "key_rate_loading": 0.1756908517844998
+    },
+    "stabilization_2024_plus": {
+      "label": "2024-01 - last",
+      "tau1_mean": 3.851595848848896,
+      "tau1_std": 2.1345508801138933,
+      "beta0_mean": 0.21707141415488843,
+      "key_rate_mean": 0.18280000000000002,
+      "cpi_mom_mean": 0.006487999999999956,
+      "system_mean_rmse_to_std": 0.7867743671273872,
+      "curve_to_macro_granger_5pct": 0,
+      "macro_to_curve_granger_5pct": 1,
+      "curve_share_in_cpi_fevd_h12": 37.522520427205166,
+      "curve_share_in_key_rate_fevd_h12": 95.71419522963653,
+      "beta0_loading": -1.3298274426043772,
+      "cpi_loading": 0.01637424138996905,
+      "key_rate_loading": 0.7443961819495726
+    }
+  },
+  "break_tests": [
+    {
+      "test_name": "welch_mean_shift",
+      "target": "tau1",
+      "break_date": "2022-02-01",
+      "sample_start": "2013-09-01",
+      "sample_end": "2026-03-01",
+      "statistic": 1.2208419778490023,
+      "p_value": 0.22487746855701615,
+      "reject_5pct": false,
+      "n_pre": 101,
+      "n_post": 50,
+      "notes": "raw tau1 mean comparison"
+    },
+    {
+      "test_name": "chow_lag1",
+      "target": "tau1",
+      "break_date": "2022-02-01",
+      "sample_start": "2013-10-01",
+      "sample_end": "2026-03-01",
+      "statistic": 1.1789803060648296,
+      "p_value": 0.3225488696977775,
+      "reject_5pct": false,
+      "n_pre": 100,
+      "n_post": 50,
+      "notes": "k_params=5"
+    },
+    {
+      "test_name": "cusum_ols",
+      "target": "tau1",
+      "break_date": "2022-02-01",
+      "sample_start": "2013-10-01",
+      "sample_end": "2026-03-01",
+      "statistic": 0.8032122282010443,
+      "p_value": 0.5389250171445027,
+      "reject_5pct": false,
+      "n_pre": 100,
+      "n_post": 50,
+      "notes": "tau1 lagged OLS residual test"
+    },
+    {
+      "test_name": "chow_lag1",
+      "target": "beta0",
+      "break_date": "2022-02-01",
+      "sample_start": "2013-10-01",
+      "sample_end": "2026-01-01",
+      "statistic": 3.072475988053971,
+      "p_value": 0.0075513432158853455,
+      "reject_5pct": true,
+      "n_pre": 97,
+      "n_post": 48,
+      "notes": "k_params=6"
+    },
+    {
+      "test_name": "chow_lag1",
+      "target": "beta1",
+      "break_date": "2022-02-01",
+      "sample_start": "2013-10-01",
+      "sample_end": "2026-01-01",
+      "statistic": 1.7004021344771911,
+      "p_value": 0.1256576070153113,
+      "reject_5pct": false,
+      "n_pre": 97,
+      "n_post": 48,
+      "notes": "k_params=6"
+    },
+    {
+      "test_name": "chow_lag1",
+      "target": "beta2",
+      "break_date": "2022-02-01",
+      "sample_start": "2013-10-01",
+      "sample_end": "2026-01-01",
+      "statistic": 0.7647273690253312,
+      "p_value": 0.5989181620567208,
+      "reject_5pct": false,
+      "n_pre": 97,
+      "n_post": 48,
+      "notes": "k_params=6"
+    },
+    {
+      "test_name": "chow_lag1",
+      "target": "cpi_mom",
+      "break_date": "2022-02-01",
+      "sample_start": "2013-10-01",
+      "sample_end": "2026-01-01",
+      "statistic": 5.100678511324104,
+      "p_value": 9.604970303547364e-05,
+      "reject_5pct": true,
+      "n_pre": 97,
+      "n_post": 48,
+      "notes": "k_params=6"
+    },
+    {
+      "test_name": "chow_lag1",
+      "target": "key_rate",
+      "break_date": "2022-02-01",
+      "sample_start": "2013-10-01",
+      "sample_end": "2026-01-01",
+      "statistic": 2.2482385444576303,
+      "p_value": 0.04241997701614039,
+      "reject_5pct": true,
+      "n_pre": 97,
+      "n_post": 48,
+      "notes": "k_params=6"
+    }
+  ],
+  "limitations": [
+    "Основная режимная спецификация использует только переменные, доступные почти на всем горизонте 2013-09 - 2026.",
+    "Ожидания аналитиков и breakeven-ряды не включены в основную VECM из-за короткой доступной истории."
+  ],
+  "findings": [
+    "Среднее значение tau1 после февраля 2022 года снизилось с 4.996 до 4.456 (-0.539), а в подпериоде 2024-01+ опустилось до 3.852.",
+    "Формальная проверка среднего tau1 на разрыв в точке 2022-02 не отвергает гипотезу стабильности (p-value=0.2249).",
+    "Тест Чоу на известный разрыв в 2022-02 указывает на изменение параметров как минимум для уравнений: beta0, cpi_mom, key_rate.",
+    "Количество значимых на 5% направлений причинности по Грейнджеру от факторов кривой к макропеременным изменилось с 0 до 2, а в 2024-01+ составило 0.",
+    "По FEVD на горизонте 12 месяцев суммарный вклад шоков факторов кривой в дисперсию ошибки прогноза key_rate изменился с 59.8% до 71.8%; в 2024-01+ он равен 95.7%.",
+    "Нормированный средний RMSE one-step VECM изменился с 1.192 в докризисном режиме до 0.434 после февраля 2022 года; для 2024-01+ он составляет 0.787.",
+    "Расчет использует свежие файлы: core до 2026-03, macro до 2026-02, совместная модельная выборка до 2026-01.",
+    "Для VECM/IRF/FEVD из модельной панели исключены месяцы с патологической компенсацией beta1 и beta2: 2014-07-01, 2014-08-01, 2018-08-01. Исходные CSV не менялись.",
+    "Сравнение подпериодов 2022-02 - 2023-12 и 2024-01+ показывает, что 2024-2026 выглядит отдельным режимом: tau1 ниже, средний key_rate выше, а набор значимых связей по Грейнджеру и FEVD отличается от переходной фазы 2022-2023."
+  ]
+}

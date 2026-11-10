@@ -1,0 +1,28 @@
+{
+  "generated_at_utc": "2026-03-21T13:01:42.810693+00:00",
+  "official_archive": {
+    "source": "https://www.cbr.ru/hd_base/zcyc_params/",
+    "start_date": "2013-09-02",
+    "end_date": "2026-03-20",
+    "raw_daily_csv": "data/raw/market/cbr_zero_curve/cbr_zero_curve_daily.csv",
+    "monthly_csv": "data/processed/cbr_zero_curve/monthly_cbr_zero_curve.csv"
+  },
+  "comparison": {
+    "report_start_date": "2013-09-01",
+    "overlap_start": "2013-09-02",
+    "overlap_end": "2026-03-06",
+    "maturities_years": [
+      1.0,
+      3.0,
+      5.0,
+      10.0
+    ],
+    "daily_rows": 12576,
+    "summary_rows": 4,
+    "artifacts": {
+      "daily_comparison_csv": "data/processed/official_curve_validation/official_vs_model_daily.csv",
+      "summary_csv": "data/processed/official_curve_validation/official_vs_model_summary.csv",
+      "summary_figure": "assets/official_curve_validation_summary.png"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "coverage": {
+    "events_start": "2019-02-08",
+    "events_end": "2026-03-20",
+    "regular_meetings": 58,
+    "unscheduled_meetings": 4,
+    "official_curve_end": "2026-03-20"
+  },
+  "artifacts": {
+    "events_csv": "data/processed/key_rate_event_study/key_rate_meeting_events.csv",
+    "reactions_csv": "data/processed/key_rate_event_study/key_rate_event_reactions.csv",
+    "summary_csv": "data/processed/key_rate_event_study/key_rate_event_summary.csv",
+    "figure": "assets/key_rate_event_study.png",
+    "findings_markdown": "docs/p4_key_rate_event_findings.md"
+  }
+}

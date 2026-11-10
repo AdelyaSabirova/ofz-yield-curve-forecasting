@@ -1,0 +1,13 @@
+direction,lag,p_value,significant_5pct
+d_beta1 -> d_cpi_mom,2,0.019377634391828553,True
+d_beta0 -> d_beta2,2,0.06747373233441015,False
+d_beta2 -> d_beta1,2,0.15420845764294724,False
+d_cpi_mom -> d_beta1,2,0.16247521912425375,False
+d_beta2 -> d_beta0,2,0.2005253781002098,False
+d_beta2 -> d_cpi_mom,2,0.20081826416942827,False
+d_beta0 -> d_beta1,2,0.3644723616681032,False
+d_beta1 -> d_beta0,2,0.5518758880444686,False
+d_beta0 -> d_cpi_mom,2,0.6816742105790901,False
+d_cpi_mom -> d_beta2,2,0.724058951100662,False
+d_beta1 -> d_beta2,2,0.776071950419366,False
+d_cpi_mom -> d_beta0,2,0.8474987546307644,False

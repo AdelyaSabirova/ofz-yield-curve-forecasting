@@ -1,0 +1,6 @@
+order,shock,shock_label,contemporaneously_ordered_after,shock_size_pp,sample_start,sample_end,n_obs
+1,cpi_mom,инфляционный шок,none,0.3992807800447211,2013-09-01,2026-01-01,146
+2,key_rate,шок ключевой ставки,cpi_mom,1.3136133085017898,2013-09-01,2026-01-01,146
+3,beta0,шок уровня кривой,"cpi_mom, key_rate",2.0011763161221134,2013-09-01,2026-01-01,146
+4,beta1,шок наклона кривой,"cpi_mom, key_rate, beta0",8.29686577924503,2013-09-01,2026-01-01,146
+5,beta2,шок кривизны,"cpi_mom, key_rate, beta0, beta1",1.9261341292121061,2013-09-01,2026-01-01,146
